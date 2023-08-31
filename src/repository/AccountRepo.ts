@@ -21,10 +21,6 @@ export class AccountRepo implements IAccountRepo {
       const balance = parseInt(account.balance);
       const amount = body.amount;
 
-      console.log(body.amount);
-
-      console.log(balance, amount);
-
       if (balance < amount) {
         return Promise.reject(new Error("Saldo tidak mencukupi"));
       }
@@ -35,7 +31,7 @@ export class AccountRepo implements IAccountRepo {
           account_number: body.to_account_number,
         },
       });
-      console.log(toAccount);
+
       if (!toAccount) {
         return Promise.reject(new Error("Account tujuan tidak ditemukan"));
       }
@@ -51,8 +47,6 @@ export class AccountRepo implements IAccountRepo {
           },
         },
       );
-
-      console.log((balance - amount).toString());
 
       await Accounts.update(
         {
