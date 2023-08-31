@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "d49f4e4e-163b-4071-94bf-1248c2fd23e4",
+		"name": "Technical Test Iqbal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23793752"
+	},
+	"item": [
+		{
+			"name": "Cek Saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/api/v1/account/:account_number",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						":account_number"
+					],
+					"variable": [
+						{
+							"key": "account_number",
+							"value": "555001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"to_account_number\" : \"555002\",\n    \"amount\" : 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/api/v1/account/:from_account_number/transfer",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						":from_account_number",
+						"transfer"
+					],
+					"variable": [
+						{
+							"key": "from_account_number",
+							"value": "555001"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
