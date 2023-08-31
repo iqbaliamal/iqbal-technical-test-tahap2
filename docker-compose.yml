@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  technical_test:
+    container_name: technical_test
+    restart: always
+    build: .
+    ports:
+      - 3005:3005
+    depends_on:
+      - postgres-server
+    volumes:
+    - .:/usr/src/app
+    networks:
+      - my-network
+
+  postgres-server:
+    image: postgres:latest
+    container_name: postgres-server
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=technical_test
+    ports: 
+      - 9005:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - my-network
+
+volumes:
+  postgres-data: {}
+
+networks:
+  my-network:
+    driver: bridge
